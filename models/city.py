@@ -21,3 +21,4 @@ class City(BaseModel, Base):
         cascade='all, delete, delete-orphan',
         backref='cities'
     ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else None
+    
