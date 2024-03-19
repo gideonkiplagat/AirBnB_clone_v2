@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
-from sqlalchemy import Column, String, Foreignkey
-from sqlalchemy.orm import relationship
-from models.base_model import BaseModel, Base
-
 import os
+from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy.orm import relationship
+
+from models.base_model import BaseModel, Base
 
 
 class City(BaseModel, Base):
@@ -14,10 +14,10 @@ class City(BaseModel, Base):
         String(128), nullable=False
     ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else ''
     state_id = Column(
-        String(60), Foreignkey('states.id'), nullable=False
+        String(60), ForeignKey('states.id'), nullable=False
     ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else ''
     places = relationship(
-        'place',
+        'Place',
         cascade='all, delete, delete-orphan',
-        back_populates='cities'
+        backref='cities'
     ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else None
