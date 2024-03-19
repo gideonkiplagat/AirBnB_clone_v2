@@ -8,7 +8,7 @@ from models.base_model import BaseModel, Base
 
 
 class User(BaseModel, Base):
-    """This class defines a user by various attributes"""
+    """ inherits from BaseModel and Base (respect the order)"""
     __tablename__ = 'users'
     email = Column(
         String(128), nullable=False
