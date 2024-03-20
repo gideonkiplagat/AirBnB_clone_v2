@@ -11,7 +11,7 @@ class TestCreateWithParameters(unittest.TestCase):
         self.console = HBNBCommand()
 
     def tearDown(self):
-        # Clean up (optional)
+        """ Clean up (optional)"""
         storage.delete_all()
         storage.save()
 
