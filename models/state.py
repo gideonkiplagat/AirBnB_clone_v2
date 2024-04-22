@@ -29,6 +29,7 @@ class State(BaseModel, Base):
             city_list = []
             all_cities = models.storage.all(City)
             for city in all_cities.values():
+                print("city ", city, " city.state_id == self.id ", city.state_id == self.id)
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
