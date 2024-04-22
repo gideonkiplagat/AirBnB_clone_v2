@@ -23,7 +23,8 @@ class Place(BaseModel, Base):
     """Representation of Place """
     if models.storage_t == 'db':
         __tablename__ = 'places'
-        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+        # id = Column(String(60), primary_key=True, nullable=False)
+        city_id = Column(String(60),ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
@@ -52,6 +53,7 @@ class Place(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         """initializes Place"""
+        print("Initialised places")
         super().__init__(*args, **kwargs)
 
     if models.storage_t != 'db':
